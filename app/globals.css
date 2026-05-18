@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+:root {
+  --navy: #0a192f;
+  --light-navy: #112240;
+  --slate: #8892b0;
+  --light-slate: #ccd6f6;
+  --white: #e6f1ff;
+  --green: #64ffda;
+  --line: #233554;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: var(--navy);
+  color: var(--light-slate);
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+}
+
+button,
+a {
+  color: inherit;
+}
+
+::selection {
+  background: rgba(100, 255, 218, 0.2);
+  color: var(--white);
+}
+
+.slide-track {
+  display: flex;
+  flex-direction: column;
+  gap: 20vh;
+  padding-block: 8px 32px;
+  transform: none;
+}
+
+.slide-panel {
+  min-width: 0;
+}
+
+@media (min-width: 720px) {
+  .slide-track {
+    display: block;
+    gap: 0;
+    padding-block: 0;
+    transition-duration: 700ms;
+    transform: translateY(calc(var(--slide-index) * -100%));
+  }
+
+  .slide-panel {
+    flex: initial;
+  }
+}
+
+@theme inline {
+  --breakpoint-sm: 720px;
+  --breakpoint-md: 1028px;
+  --breakpoint-lg: 1280px;
+  --font-sans: var(--font-space-grotesk);
+  --color-navy: var(--navy);
+  --color-light-navy: var(--light-navy);
+  --color-slate: var(--slate);
+  --color-light-slate: var(--light-slate);
+  --color-portfolio-white: var(--white);
+  --color-green: var(--green);
+  --color-line: var(--line);
+}
