@@ -43,19 +43,12 @@ function MailIcon() {
 export default function ContactLinks({ profile }: ContactLinksProps) {
   const [isEmailVisible, setIsEmailVisible] = useState(false);
 
-  const handleEmailClick = () => {
-    const isMobile = window.matchMedia("(max-width: 719px)").matches;
-
-    if (isMobile || isEmailVisible) {
-      window.location.href = `mailto:${profile.email}`;
-      return;
-    }
-
+  const handleEmailButtonClick = () => {
     setIsEmailVisible(true);
   };
 
   return (
-    <div className="flex items-center gap-5 text-[11px] font-bold tracking-[-0.012em] text-green">
+    <div className="flex items-center gap-5 text-[14px] font-bold leading-[1.1] tracking-[-0.012em] text-green">
       <a
         className="flex size-10 shrink-0 items-center justify-center rounded-md border border-navy bg-light-navy/75 transition hover:border-green hover:text-portfolio-white"
         href={profile.githubUrl}
@@ -73,7 +66,7 @@ export default function ContactLinks({ profile }: ContactLinksProps) {
       <button
         className="flex size-10 shrink-0 items-center justify-center rounded-md border border-navy bg-light-navy/75 transition hover:border-green hover:text-portfolio-white"
         type="button"
-        onClick={handleEmailClick}
+        onClick={handleEmailButtonClick}
         aria-label="Email"
       >
         <MailIcon />
@@ -86,18 +79,17 @@ export default function ContactLinks({ profile }: ContactLinksProps) {
             : "grid-cols-[0fr] -translate-x-3 opacity-0",
         ].join(" ")}
       >
-        <button
+        <a
           className={[
-            "min-h-11 min-w-0 overflow-hidden whitespace-nowrap text-left text-[13px] font-medium tracking-[-0.005em] text-light-slate transition hover:text-green",
+            "flex min-h-11 min-w-0 items-center overflow-hidden whitespace-nowrap text-left text-[14px] font-medium leading-[1.1] tracking-[-0.005em] text-light-slate transition hover:text-green",
             isEmailVisible ? "" : "pointer-events-none",
           ].join(" ")}
-          type="button"
-          onClick={handleEmailClick}
+          href={`mailto:${profile.email}`}
           aria-hidden={!isEmailVisible}
           tabIndex={isEmailVisible ? 0 : -1}
         >
           {profile.email}
-        </button>
+        </a>
       </div>
     </div>
   );

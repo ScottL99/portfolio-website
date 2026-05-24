@@ -12,19 +12,37 @@ import ExperienceSection from "@/components/sections/ExperienceSection";
 import HomeSection from "@/components/sections/HomeSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 
+// ------------COMPONENT INPUTS-------------
+// Defines the data CanvasFrame needs to render the portfolio.
+// Referenced by: CanvasFrame function props.
 type CanvasFrameProps = {
   profile: Profile;
   projects: Project[];
   experience: Experience;
 };
 
+// ------------LOCAL UI TYPES-------------
+// Represents the desktop Projects edge hint direction.
+// Referenced by: projectHint state and handleProjectEdgeIntent.
 type EdgeHint = "up" | "down" | null;
+
+// Extends React CSSProperties so the custom CSS variable is type-safe.
+// Referenced by: slide-track inline style.
 type SlideTrackStyle = CSSProperties & {
   "--slide-index": number;
 };
 
+// ------------SLIDE SETTINGS-------------
+// Defines the canonical order for desktop slides and mobile sections.
+// Referenced by: stepSlide, mobile active tracking, and activeIndex.
 const slideOrder: SlideId[] = ["home", "projects", "experience"];
+
+// Time window for the desktop Projects edge confirmation.
+// Referenced by: handleProjectEdgeIntent.
 const hintResetMs = 900;
+
+// Lock duration after a desktop slide change to prevent wheel/trackpad over-triggering.
+// Referenced by: stepSlide.
 const wheelLockMs = 620;
 
 export default function CanvasFrame({
@@ -32,25 +50,52 @@ export default function CanvasFrame({
   projects,
   experience,
 }: CanvasFrameProps) {
+  // ------------ACTIVE UI STATE-------------
+  // Tracks the currently active section/slide.
+  // Referenced by: LeftRail active highlight, desktop slide transform, mobile active section detection.
   const [activeSlide, setActiveSlide] = useState<SlideId>("home");
+
+  // Stores the desktop Projects edge hint direction.
+  // Referenced by: ProjectScrollHint top/bottom UI.
   const [projectHint, setProjectHint] = useState<EdgeHint>(null);
-  const mobileScrollRef = useRef<HTMLDivElement | null>(null);
+
+  // ------------DESKTOP SCROLL REFS-------------
+  // Points to the Projects list scroller on desktop.
+  // Referenced by: desktop wheel handler to decide whether Projects can scroll internally.
   const projectScrollerRef = useRef<HTMLDivElement | null>(null);
+
+  // ------------MOBILE SCROLL REFS-------------
+  // Points to the mobile middle content scroller.
+  // Referenced by: mobile active section detection.
+  const mobileScrollRef = useRef<HTMLDivElement | null>(null);
+
+  // Stores each section DOM node for mobile anchor-like navigation.
+  // Referenced by: goToSlide scrollIntoView and mobile center-point active detection.
   const sectionRefs = useRef<Record<SlideId, HTMLDivElement | null>>({
     home: null,
     projects: null,
     experience: null,
   });
+
+  // ------------INTERACTION MEMORY-------------
+  // Remembers the last desktop Projects edge intent.
+  // Referenced by: handleProjectEdgeIntent to require a second same-direction wheel action.
   const lastEdgeIntentRef = useRef<{ direction: EdgeHint; time: number }>({
     direction: null,
     time: 0,
   });
+
+  // Remembers the last desktop slide change time.
+  // Referenced by: stepSlide to prevent wheel/trackpad events from skipping multiple slides.
   const lastSlideChangeRef = useRef(0);
 
+  // ------------NAVIGATION ENTRY POINT-------------
+  // Moves to a requested section/slide.
+  // Referenced by: LeftRail nav clicks and stepSlide.
   const goToSlide = useCallback((slide: SlideId) => {
     setProjectHint(null);
     lastEdgeIntentRef.current = { direction: null, time: 0 };
-    if (window.matchMedia("(max-width: 719px)").matches) {
+    if (window.matchMedia("(max-width: 1023px)").matches) {
       sectionRefs.current[slide]?.scrollIntoView({
         behavior: "smooth",
         block: slide === "projects" ? "start" : "center",
@@ -59,6 +104,9 @@ export default function CanvasFrame({
     setActiveSlide(slide);
   }, []);
 
+  // ------------DESKTOP SLIDE STEPPER-------------
+  // Moves one slide forward or backward with boundary and timing protection.
+  // Referenced by: desktop wheel handler and handleProjectEdgeIntent.
   const stepSlide = useCallback(
     (direction: 1 | -1) => {
       const now = Date.now();
@@ -78,6 +126,9 @@ export default function CanvasFrame({
     [activeSlide, goToSlide],
   );
 
+  // ------------PROJECTS EDGE CONFIRMATION-------------
+  // Handles the desktop Projects edge UX: first wheel shows hint, second same-direction wheel changes slide.
+  // Referenced by: desktop wheel handler after Projects reaches its top or bottom.
   const handleProjectEdgeIntent = useCallback(
     (direction: Exclude<EdgeHint, null>) => {
       const now = Date.now();
@@ -98,9 +149,12 @@ export default function CanvasFrame({
     [stepSlide],
   );
 
+  // ------------DESKTOP WHEEL CONTROL-------------
+  // Controls desktop wheel navigation.
+  // Referenced by: window wheel event listener; ignores mobile widths.
   useEffect(() => {
     const handleWheel = (event: WheelEvent) => {
-      if (window.matchMedia("(max-width: 719px)").matches) return;
+      if (window.matchMedia("(max-width: 1023px)").matches) return;
       if (Math.abs(event.deltaY) < 4) return;
       event.preventDefault();
 
@@ -135,12 +189,15 @@ export default function CanvasFrame({
     return () => window.removeEventListener("wheel", handleWheel);
   }, [activeSlide, handleProjectEdgeIntent, stepSlide]);
 
+  // ------------MOBILE ACTIVE SECTION TRACKING-------------
+  // Updates activeSlide based on which mobile section is closest to the middle of the scroll viewport.
+  // Referenced by: mobile scroll/resize event listeners and LeftRail active highlight.
   useEffect(() => {
     const scroller = mobileScrollRef.current;
     if (!scroller) return;
 
     const updateMobileActiveSlide = () => {
-      if (!window.matchMedia("(max-width: 719px)").matches) return;
+      if (!window.matchMedia("(max-width: 1023px)").matches) return;
 
       const scrollerRect = scroller.getBoundingClientRect();
       const centerY = scrollerRect.top + scrollerRect.height / 2;
@@ -177,25 +234,30 @@ export default function CanvasFrame({
     };
   }, [activeSlide]);
 
+  // ------------DESKTOP TRANSFORM INDEX-------------
+  // Converts the active slide id into a numeric index for the desktop slide-track CSS transform.
+  // Referenced by: --slide-index inline style below.
   const activeIndex = slideOrder.indexOf(activeSlide);
 
+
+  // front-end layout
   return (
     <div className="flex h-screen w-screen justify-center overflow-hidden bg-navy px-5 py-10 text-light-slate sm:px-10 sm:py-[60px] md:px-[60px] md:py-20 lg:px-20 lg:py-[100px]">
-      <div className="grid h-full w-full max-w-[1440px] grid-rows-[auto_minmax(0,1fr)_auto] gap-y-6 border-y border-line sm:grid-cols-[40%_55%] sm:grid-rows-1 sm:gap-x-[5%] sm:gap-y-0">
+      <div className="grid h-full w-full max-w-[1440px] grid-rows-[auto_minmax(0,1fr)_auto] gap-y-6 border-y border-line md:flex md:justify-between md:gap-y-0">
         <LeftRail
           activeSlide={activeSlide}
           profile={profile}
           onSelect={goToSlide}
         />
 
-        <div className="grid min-h-0 grid-rows-[0_minmax(0,1fr)_0] sm:grid-rows-[28px_minmax(0,1fr)_28px]">
+        <div className="grid min-h-0 grid-rows-[0_minmax(0,1fr)_0] md:w-full md:max-w-[50vw] md:grid-rows-[28px_minmax(0,1fr)_28px]">
           <div className="flex items-center justify-end">
             <ProjectScrollHint direction={projectHint} placement="top" />
           </div>
 
           <div
             ref={mobileScrollRef}
-            className="min-h-0 overflow-y-auto overflow-x-hidden bg-[radial-gradient(circle_at_center,rgba(35,53,84,0.75)_1.5px,transparent_1.5px)] [background-size:122px_148px] [scrollbar-width:none] sm:overflow-hidden [&::-webkit-scrollbar]:hidden"
+            className="min-h-0 overflow-y-auto overflow-x-hidden bg-[radial-gradient(circle_at_center,rgba(35,53,84,0.75)_1.5px,transparent_1.5px)] [background-size:122px_148px] [scrollbar-width:none] md:overflow-hidden [&::-webkit-scrollbar]:hidden"
           >
             <div
               className="slide-track h-full transition-transform ease-[cubic-bezier(0.77,0,0.175,1)]"
@@ -205,7 +267,7 @@ export default function CanvasFrame({
                 ref={(node) => {
                   sectionRefs.current.home = node;
                 }}
-                className="slide-panel sm:h-full"
+                className="slide-panel md:h-full"
               >
                 <HomeSection profile={profile} />
               </div>
@@ -213,7 +275,7 @@ export default function CanvasFrame({
                 ref={(node) => {
                   sectionRefs.current.projects = node;
                 }}
-                className="slide-panel sm:h-full"
+                className="slide-panel md:h-full"
               >
                 <ProjectsSection
                   projects={projects}
@@ -224,7 +286,7 @@ export default function CanvasFrame({
                 ref={(node) => {
                   sectionRefs.current.experience = node;
                 }}
-                className="slide-panel sm:h-full"
+                className="slide-panel md:h-full"
               >
                 <ExperienceSection experience={experience} />
               </div>
@@ -236,7 +298,7 @@ export default function CanvasFrame({
           </div>
         </div>
 
-        <div className="pb-5 sm:hidden">
+        <div className="pb-5 md:hidden">
           <ContactLinks profile={profile} />
         </div>
       </div>

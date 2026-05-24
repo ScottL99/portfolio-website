@@ -14,7 +14,7 @@ export default function ProjectScrollHint({
   if (!isVisible) return <div aria-hidden="true" />;
 
   return (
-    <div className="hidden items-center justify-end text-[12px] font-medium tracking-[-0.012em] text-green sm:flex">
+    <div className="hidden items-center justify-end text-[14px] font-medium leading-[1.1] tracking-[-0.012em] text-green md:flex">
       {placement === "top"
         ? "Scroll up to Home"
         : "Scroll down to Experience"}

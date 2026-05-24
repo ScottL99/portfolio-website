@@ -13,16 +13,16 @@ export default function ProjectsSection({
   scrollerRef,
 }: ProjectsSectionProps) {
   return (
-    <section className="flex justify-end sm:h-full sm:items-center">
+    <section className="flex justify-end md:h-full md:items-center">
       <div
         ref={scrollerRef}
-        className="w-full max-w-[792px] pr-1 sm:max-h-full sm:overflow-y-auto sm:overscroll-contain sm:[scrollbar-width:none] sm:[&::-webkit-scrollbar]:hidden"
+        className="w-full pr-1 md:max-h-full md:overflow-y-auto md:overscroll-contain md:[scrollbar-width:none] md:[&::-webkit-scrollbar]:hidden"
       >
-        <div className="bg-navy pb-5">
-          <h2 className="text-[44px] font-bold leading-[1.22] tracking-[-0.022em] text-portfolio-white">
+        <div className="bg-navy pb-5 md:pt-[10vh]">
+          <h2 className="text-[40px] font-bold leading-[1] tracking-[-0.022em] text-portfolio-white sm:text-[48px]">
             Projects
           </h2>
-          <p className="max-w-[760px] pt-2 text-[15px] leading-6 tracking-[-0.005em] text-slate">
+          <p className="max-w-[44rem] pt-2 text-[16px] leading-[1.4] tracking-[-0.005em] text-slate sm:text-[18px]">
             A compact index of front-end work, designed to stay readable when
             the project count grows.
           </p>

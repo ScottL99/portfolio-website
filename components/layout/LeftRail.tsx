@@ -19,7 +19,7 @@ export default function LeftRail({
   onSelect,
 }: LeftRailProps) {
   return (
-    <aside className="flex min-h-0 flex-col justify-between py-5 sm:py-9 md:py-10">
+    <aside className="flex min-h-0 flex-col justify-between py-5 sm:py-9 md:w-fit md:shrink-0 md:py-10">
       <div>
         <button
           className="block text-left"
@@ -27,15 +27,15 @@ export default function LeftRail({
           onClick={() => onSelect("home")}
           aria-label="Go to home"
         >
-          <div className="text-[24px] font-bold leading-7 tracking-[-0.022em] text-portfolio-white">
+          <div className="text-[24px] font-bold leading-[1] tracking-[-0.022em] text-portfolio-white">
             {profile.name}
           </div>
-          <div className="pt-1 text-[14px] font-medium leading-5 tracking-[-0.012em] text-green">
+          <div className="pt-1 text-[14px] font-medium leading-[1.1] tracking-[-0.012em] text-green">
             {profile.role}
           </div>
         </button>
 
-        <nav className="flex gap-5 pt-8 sm:flex-col sm:pt-14">
+        <nav className="flex gap-5 pt-8 md:flex-col md:pt-14">
           {navItems.map((item) => {
             const isActive = activeSlide === item.id;
             return (
@@ -55,7 +55,7 @@ export default function LeftRail({
                 />
                 <span
                   className={[
-                    "text-[14px] tracking-[-0.012em] transition group-hover:text-green",
+                    "text-[14px] leading-[1.1] tracking-[-0.012em] transition group-hover:text-green",
                     isActive ? "font-medium text-green" : "text-slate",
                   ].join(" ")}
                 >
@@ -67,7 +67,7 @@ export default function LeftRail({
         </nav>
       </div>
 
-      <div className="hidden sm:block">
+      <div className="hidden md:block">
         <ContactLinks profile={profile} />
       </div>
     </aside>

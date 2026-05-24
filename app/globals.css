@@ -34,6 +34,14 @@ a {
   color: var(--white);
 }
 
+/*
+  Typography scale
+  Mobile: 48/40/28/24/16/14px
+  Desktop: 64/48/32/24/18/14px
+  Leading: 64 and 48 = 1.0, 32 and 24 = 1.1, 18 = 1.4, 14 = 1.1
+  Typography changes at 720px; canvas navigation changes at 1024px.
+*/
+
 .slide-track {
   display: flex;
   flex-direction: column;
@@ -46,7 +54,7 @@ a {
   min-width: 0;
 }
 
-@media (min-width: 720px) {
+@media (min-width: 1024px) {
   .slide-track {
     display: block;
     gap: 0;
@@ -62,7 +70,7 @@ a {
 
 @theme inline {
   --breakpoint-sm: 720px;
-  --breakpoint-md: 1028px;
+  --breakpoint-md: 1024px;
   --breakpoint-lg: 1280px;
   --font-sans: var(--font-space-grotesk);
   --color-navy: var(--navy);
