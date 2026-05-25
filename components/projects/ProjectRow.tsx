@@ -1,21 +1,28 @@
 "use client";
 
-import { useState } from "react";
 import type { Project } from "@/content/projects";
 
 type ProjectRowProps = {
   project: Project;
+  isOpen: boolean;
+  onToggle: () => void;
 };
 
-export default function ProjectRow({ project }: ProjectRowProps) {
-  const [isOpen, setIsOpen] = useState(false);
+function formatProjectUrl(url: string) {
+  return url.replace(/^https?:\/\//, "").replace(/^www\./, "").replace(/\/$/, "");
+}
 
+export default function ProjectRow({
+  project,
+  isOpen,
+  onToggle,
+}: ProjectRowProps) {
   return (
     <article className="border-b border-line/60 text-sm transition hover:bg-light-navy/45">
       <button
         className="grid w-full grid-cols-[minmax(0,1fr)_32px] gap-5 py-4 text-left"
         type="button"
-        onClick={() => setIsOpen((current) => !current)}
+        onClick={onToggle}
         aria-expanded={isOpen}
       >
         <div className="grid min-w-0 gap-2">
@@ -57,9 +64,22 @@ export default function ProjectRow({ project }: ProjectRowProps) {
         ].join(" ")}
       >
         <div className="min-h-0">
-          <p className="pb-6 pr-12 text-[16px] leading-[1.4] tracking-[-0.005em] text-slate sm:text-[18px] md:pr-16">
-            {project.body}
-          </p>
+          <div className="flex flex-col gap-4 pb-6 pr-12 md:pr-16">
+            <p className="text-[16px] leading-[1.4] tracking-[-0.005em] text-slate sm:text-[18px]">
+              {project.body}
+            </p>
+            {project.url && (
+              <a
+                className="w-fit text-[14px] font-medium leading-[1.1] tracking-[-0.012em] text-slate underline-offset-4 transition-all duration-200 hover:text-green hover:underline"
+                href={project.url}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {formatProjectUrl(project.url)}
+                {project.urlNote ? ` (${project.urlNote})` : ""}
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </article>

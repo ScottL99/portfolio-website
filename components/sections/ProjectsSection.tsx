@@ -19,7 +19,10 @@ export default function ProjectsSection({
         className="w-full pr-1 md:max-h-full md:overflow-y-auto md:overscroll-contain md:[scrollbar-width:none] md:[&::-webkit-scrollbar]:hidden"
       >
         <div className="bg-navy pb-5 md:pt-[10vh]">
-          <h2 className="text-[40px] font-bold leading-[1] tracking-[-0.022em] text-portfolio-white sm:text-[48px]">
+          <h2
+            className="text-[40px] font-bold leading-[1] tracking-[-0.022em] text-portfolio-white sm:text-[48px]"
+            data-section-anchor
+          >
             Projects
           </h2>
           <p className="max-w-[44rem] pt-2 text-[16px] leading-[1.4] tracking-[-0.005em] text-slate sm:text-[18px]">

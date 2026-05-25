@@ -41,6 +41,14 @@ const slideOrder: SlideId[] = ["home", "projects", "experience"];
 // Referenced by: handleProjectEdgeIntent.
 const hintResetMs = 900;
 
+// Minimum delay before a second desktop Projects edge intent can change slides.
+// Referenced by: handleProjectEdgeIntent to avoid trackpad momentum immediately switching sections.
+const edgeMinimumDelayMs = 280;
+
+// Wheel delta required at the Projects edge before changing desktop slides.
+// Referenced by: handleProjectEdgeIntent to make leaving Projects more deliberate.
+const edgeScrollThreshold = 180;
+
 // Lock duration after a desktop slide change to prevent wheel/trackpad over-triggering.
 // Referenced by: stepSlide.
 const wheelLockMs = 620;
@@ -80,9 +88,14 @@ export default function CanvasFrame({
   // ------------INTERACTION MEMORY-------------
   // Remembers the last desktop Projects edge intent.
   // Referenced by: handleProjectEdgeIntent to require a second same-direction wheel action.
-  const lastEdgeIntentRef = useRef<{ direction: EdgeHint; time: number }>({
+  const lastEdgeIntentRef = useRef<{
+    direction: EdgeHint;
+    time: number;
+    delta: number;
+  }>({
     direction: null,
     time: 0,
+    delta: 0,
   });
 
   // Remembers the last desktop slide change time.
@@ -94,11 +107,15 @@ export default function CanvasFrame({
   // Referenced by: LeftRail nav clicks and stepSlide.
   const goToSlide = useCallback((slide: SlideId) => {
     setProjectHint(null);
-    lastEdgeIntentRef.current = { direction: null, time: 0 };
+    lastEdgeIntentRef.current = { direction: null, time: 0, delta: 0 };
     if (window.matchMedia("(max-width: 1023px)").matches) {
-      sectionRefs.current[slide]?.scrollIntoView({
+      const titleAnchor = sectionRefs.current[slide]?.querySelector<HTMLElement>(
+        "[data-section-anchor]",
+      );
+
+      titleAnchor?.scrollIntoView({
         behavior: "smooth",
-        block: slide === "projects" ? "start" : "center",
+        block: "start",
       });
     }
     setActiveSlide(slide);
@@ -127,23 +144,39 @@ export default function CanvasFrame({
   );
 
   // ------------PROJECTS EDGE CONFIRMATION-------------
-  // Handles the desktop Projects edge UX: first wheel shows hint, second same-direction wheel changes slide.
+  // Handles the desktop Projects edge UX: first wheel shows hint, then enough same-direction scroll changes slide.
   // Referenced by: desktop wheel handler after Projects reaches its top or bottom.
   const handleProjectEdgeIntent = useCallback(
-    (direction: Exclude<EdgeHint, null>) => {
+    (direction: Exclude<EdgeHint, null>, deltaY: number) => {
       const now = Date.now();
       const last = lastEdgeIntentRef.current;
+      const edgeDelta = Math.abs(deltaY);
       const sameRecentIntent =
         last.direction === direction && now - last.time < hintResetMs;
 
       if (!sameRecentIntent) {
         setProjectHint(direction);
-        lastEdgeIntentRef.current = { direction, time: now };
+        lastEdgeIntentRef.current = { direction, time: now, delta: 0 };
+        return;
+      }
+
+      const elapsed = now - last.time;
+      const accumulatedDelta = last.delta + edgeDelta;
+      lastEdgeIntentRef.current = {
+        direction,
+        time: last.time,
+        delta: accumulatedDelta,
+      };
+
+      if (
+        elapsed < edgeMinimumDelayMs ||
+        accumulatedDelta < edgeScrollThreshold
+      ) {
         return;
       }
 
       setProjectHint(null);
-      lastEdgeIntentRef.current = { direction: null, time: 0 };
+      lastEdgeIntentRef.current = { direction: null, time: 0, delta: 0 };
       stepSlide(direction === "down" ? 1 : -1);
     },
     [stepSlide],
@@ -177,12 +210,12 @@ export default function CanvasFrame({
 
       if (canScrollInside) {
         setProjectHint(null);
-        lastEdgeIntentRef.current = { direction: null, time: 0 };
+        lastEdgeIntentRef.current = { direction: null, time: 0, delta: 0 };
         scroller.scrollBy({ top: event.deltaY, behavior: "auto" });
         return;
       }
 
-      handleProjectEdgeIntent(direction);
+      handleProjectEdgeIntent(direction, event.deltaY);
     };
 
     window.addEventListener("wheel", handleWheel, { passive: false });

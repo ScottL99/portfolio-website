@@ -11,7 +11,10 @@ export default function ExperienceSection({
     <section className="flex min-h-[60svh] items-center justify-end md:h-full md:min-h-0">
       <div className="flex w-full flex-col gap-8 md:pt-[10vh]">
         <div>
-          <h2 className="text-[40px] font-bold leading-[1] tracking-[-0.022em] text-portfolio-white sm:text-[48px]">
+          <h2
+            className="text-[40px] font-bold leading-[1] tracking-[-0.022em] text-portfolio-white sm:text-[48px]"
+            data-section-anchor
+          >
             Experience
           </h2>
           <p className="pt-2 text-[16px] leading-[1.4] tracking-[-0.005em] text-light-slate sm:text-[18px]">

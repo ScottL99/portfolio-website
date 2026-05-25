@@ -8,7 +8,10 @@ export default function HomeSection({ profile }: HomeSectionProps) {
   return (
     <section className="flex min-h-[60svh] items-center justify-end md:h-full md:min-h-0">
       <div className="w-full md:pt-[10vh]">
-        <h1 className="text-[48px] font-bold leading-[1] tracking-[-0.022em] text-portfolio-white sm:text-[64px]">
+        <h1
+          className="text-[48px] font-bold leading-[1] tracking-[-0.022em] text-portfolio-white sm:text-[64px]"
+          data-section-anchor
+        >
           {profile.name}
         </h1>
         <p className="pt-2 text-[28px] font-bold leading-[1.1] tracking-[-0.022em] text-light-slate sm:text-[32px]">
