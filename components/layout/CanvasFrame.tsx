@@ -4,7 +4,7 @@ import { type CSSProperties, useCallback, useEffect, useRef, useState } from "re
 import type { Experience } from "@/content/experience";
 import type { Profile } from "@/content/profile";
 import type { Project } from "@/content/projects";
-import { PROJECT_EDGE_THRESHOLD, type SlideId } from "@/lib/constants";
+import { PROJECT_EDGE_THRESHOLD, SLIDES, type SlideId } from "@/lib/constants";
 import ContactLinks from "./ContactLinks";
 import LeftRail from "./LeftRail";
 import ThemeToggle from "./ThemeToggle";
@@ -34,10 +34,6 @@ type SlideTrackStyle = CSSProperties & {
 };
 
 // ------------SLIDE SETTINGS-------------
-// Defines the canonical order for desktop slides and mobile sections.
-// Referenced by: stepSlide, mobile active tracking, and activeIndex.
-const slideOrder: SlideId[] = ["home", "projects", "experience"];
-
 // Time window for the desktop Projects edge confirmation.
 // Referenced by: handleProjectEdgeIntent.
 const hintResetMs = 900;
@@ -130,15 +126,15 @@ export default function CanvasFrame({
       const now = Date.now();
       if (now - lastSlideChangeRef.current < wheelLockMs) return;
 
-      const currentIndex = slideOrder.indexOf(activeSlide);
+      const currentIndex = SLIDES.indexOf(activeSlide);
       const nextIndex = Math.min(
-        slideOrder.length - 1,
+        SLIDES.length - 1,
         Math.max(0, currentIndex + direction),
       );
 
       if (nextIndex !== currentIndex) {
         lastSlideChangeRef.current = now;
-        goToSlide(slideOrder[nextIndex]);
+        goToSlide(SLIDES[nextIndex]);
       }
     },
     [activeSlide, goToSlide],
@@ -235,7 +231,7 @@ export default function CanvasFrame({
 
       const scrollerRect = scroller.getBoundingClientRect();
       const centerY = scrollerRect.top + scrollerRect.height / 2;
-      const closest = slideOrder.reduce(
+      const closest = SLIDES.reduce(
         (currentClosest, slide) => {
           const node = sectionRefs.current[slide];
           if (!node) return currentClosest;
@@ -271,7 +267,7 @@ export default function CanvasFrame({
   // ------------DESKTOP TRANSFORM INDEX-------------
   // Converts the active slide id into a numeric index for the desktop slide-track CSS transform.
   // Referenced by: --slide-index inline style below.
-  const activeIndex = slideOrder.indexOf(activeSlide);
+  const activeIndex = SLIDES.indexOf(activeSlide);
 
 
   // front-end layout
