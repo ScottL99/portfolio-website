@@ -8,6 +8,34 @@
   --white: #e6f1ff;
   --green: #64ffda;
   --line: #233554;
+  --muted-dot: var(--line);
+  --dot: rgba(35, 53, 84, 0.75);
+  --canvas-pattern: radial-gradient(
+    circle at center,
+    var(--dot) 1.5px,
+    transparent 1.5px
+  );
+  --canvas-pattern-size: 122px 148px;
+  --selection-bg: rgba(100, 255, 218, 0.2);
+  --selection-text: var(--white);
+}
+
+[data-theme="light"] {
+  --navy: #f7f9fc;
+  --light-navy: #edf3f7;
+  --slate: #64748b;
+  --light-slate: #334155;
+  --white: #0f172a;
+  --green: #0f766e;
+  --line: #0f766e;
+  --muted-dot: #cbd5e1;
+  --dot: rgba(203, 213, 225, 0.36);
+  --canvas-pattern:
+    linear-gradient(var(--dot) 1px, transparent 1px),
+    linear-gradient(90deg, var(--dot) 1px, transparent 1px);
+  --canvas-pattern-size: 64px 64px;
+  --selection-bg: rgba(15, 118, 110, 0.14);
+  --selection-text: var(--white);
 }
 
 * {
@@ -25,8 +53,8 @@ body {
 }
 
 ::selection {
-  background: rgba(100, 255, 218, 0.2);
-  color: var(--white);
+  background: var(--selection-bg);
+  color: var(--selection-text);
 }
 
 /*

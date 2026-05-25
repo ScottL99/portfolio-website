@@ -7,6 +7,7 @@ import type { Project } from "@/content/projects";
 import { PROJECT_EDGE_THRESHOLD, type SlideId } from "@/lib/constants";
 import ContactLinks from "./ContactLinks";
 import LeftRail from "./LeftRail";
+import ThemeToggle from "./ThemeToggle";
 import ProjectScrollHint from "@/components/projects/ProjectScrollHint";
 import ExperienceSection from "@/components/sections/ExperienceSection";
 import HomeSection from "@/components/sections/HomeSection";
@@ -275,7 +276,7 @@ export default function CanvasFrame({
 
   // front-end layout
   return (
-    <div className="flex h-screen w-screen justify-center overflow-hidden bg-navy bg-[radial-gradient(circle_at_center,rgba(35,53,84,0.75)_1.5px,transparent_1.5px)] px-5 py-10 text-light-slate [background-size:122px_148px] sm:px-10 sm:py-[60px] md:px-[60px] md:py-20 lg:px-20 lg:py-[100px]">
+    <div className="flex h-screen w-screen justify-center overflow-hidden bg-navy bg-[image:var(--canvas-pattern)] bg-[length:var(--canvas-pattern-size)] px-5 py-10 text-light-slate sm:px-10 sm:py-[60px] md:px-[60px] md:py-20 lg:px-20 lg:py-[100px]">
       <div className="grid h-full w-full max-w-[1440px] grid-rows-[auto_minmax(0,1fr)_auto] gap-y-6 border-y border-line md:flex md:justify-between md:gap-y-0">
         <LeftRail
           activeSlide={activeSlide}
@@ -331,7 +332,8 @@ export default function CanvasFrame({
           </div>
         </div>
 
-        <div className="pb-5 md:hidden">
+        <div className="flex items-center gap-5 pb-5 md:hidden">
+          <ThemeToggle />
           <ContactLinks profile={profile} />
         </div>
       </div>

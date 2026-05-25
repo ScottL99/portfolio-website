@@ -1,6 +1,7 @@
 import type { Profile } from "@/content/profile";
 import type { SlideId } from "@/lib/constants";
 import ContactLinks from "./ContactLinks";
+import ThemeToggle from "./ThemeToggle";
 
 type LeftRailProps = {
   activeSlide: SlideId;
@@ -50,7 +51,7 @@ export default function LeftRail({
                     "rounded-full border transition",
                     isActive
                       ? "size-2.5 border-green bg-green"
-                      : "size-2 border-slate/40 bg-line",
+                      : "size-2 border-slate/40 bg-[var(--muted-dot)]",
                   ].join(" ")}
                 />
                 <span
@@ -67,7 +68,8 @@ export default function LeftRail({
         </nav>
       </div>
 
-      <div className="hidden md:block">
+      <div className="hidden md:flex md:flex-col md:items-start md:gap-5">
+        <ThemeToggle />
         <ContactLinks profile={profile} />
       </div>
     </aside>

@@ -41,7 +41,7 @@ export default function HomeSection({ profile }: HomeSectionProps) {
             {profile.cta}
           </p>
           <button
-            className="grid w-fit overflow-hidden rounded-md border border-green px-5 py-3 text-[14px] font-medium leading-[1.1] tracking-[-0.012em] text-green transition-all duration-200 hover:bg-green hover:!text-[#0a192f]"
+            className="grid w-fit overflow-hidden rounded-md border border-green px-5 py-3 text-[14px] font-medium leading-[1.1] tracking-[-0.012em] text-green transition-all duration-200 hover:bg-green hover:!text-navy"
             type="button"
             onClick={handleContactClick}
           >
