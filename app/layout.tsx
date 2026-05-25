@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Space_Grotesk } from "next/font/google";
 import { themeInitScript } from "@/lib/theme";
 import "./globals.css";
@@ -24,7 +25,10 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
-      <body className={`${spaceGrotesk.variable} antialiased`}>{children}</body>
+      <body className={`${spaceGrotesk.variable} antialiased`}>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
