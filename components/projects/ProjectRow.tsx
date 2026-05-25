@@ -70,7 +70,7 @@ export default function ProjectRow({
             </p>
             {project.url && (
               <a
-                className="w-fit text-[14px] font-medium leading-[1.1] tracking-[-0.012em] text-slate underline-offset-4 transition-all duration-200 hover:text-green hover:underline"
+                className="w-fit text-[14px] font-medium leading-[1.1] tracking-[-0.012em] text-light-slate underline-offset-4 transition-all duration-200 hover:text-green hover:underline"
                 href={project.url}
                 target="_blank"
                 rel="noreferrer"

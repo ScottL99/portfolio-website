@@ -275,7 +275,7 @@ export default function CanvasFrame({
 
   // front-end layout
   return (
-    <div className="flex h-screen w-screen justify-center overflow-hidden bg-navy px-5 py-10 text-light-slate sm:px-10 sm:py-[60px] md:px-[60px] md:py-20 lg:px-20 lg:py-[100px]">
+    <div className="flex h-screen w-screen justify-center overflow-hidden bg-navy bg-[radial-gradient(circle_at_center,rgba(35,53,84,0.75)_1.5px,transparent_1.5px)] px-5 py-10 text-light-slate [background-size:122px_148px] sm:px-10 sm:py-[60px] md:px-[60px] md:py-20 lg:px-20 lg:py-[100px]">
       <div className="grid h-full w-full max-w-[1440px] grid-rows-[auto_minmax(0,1fr)_auto] gap-y-6 border-y border-line md:flex md:justify-between md:gap-y-0">
         <LeftRail
           activeSlide={activeSlide}
@@ -290,7 +290,7 @@ export default function CanvasFrame({
 
           <div
             ref={mobileScrollRef}
-            className="min-h-0 overflow-y-auto overflow-x-hidden bg-[radial-gradient(circle_at_center,rgba(35,53,84,0.75)_1.5px,transparent_1.5px)] [background-size:122px_148px] [scrollbar-width:none] md:overflow-hidden [&::-webkit-scrollbar]:hidden"
+            className="min-h-0 overflow-y-auto overflow-x-hidden [scrollbar-width:none] md:overflow-hidden [&::-webkit-scrollbar]:hidden"
           >
             <div
               className="slide-track h-full transition-transform ease-[cubic-bezier(0.77,0,0.175,1)]"

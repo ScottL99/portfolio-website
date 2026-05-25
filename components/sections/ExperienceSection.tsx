@@ -22,7 +22,7 @@ export default function ExperienceSection({
           </p>
         </div>
 
-        <article className="flex w-full flex-col gap-3 border border-line bg-light-navy/60 p-6">
+        <article className="flex w-full flex-col gap-3 rounded-md border border-line bg-light-navy/60 p-6">
           <p className="text-[14px] font-medium uppercase leading-[1.1] tracking-[-0.012em] text-green">
             {experience.period}
           </p>
