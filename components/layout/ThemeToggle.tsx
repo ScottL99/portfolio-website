@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import IconButton from "@/components/ui/IconButton";
 
 type ThemeMode = "dark" | "light";
 
@@ -54,14 +55,13 @@ export default function ThemeToggle() {
   };
 
   return (
-    <button
-      className="flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-md border border-navy bg-light-navy/75 text-green transition hover:border-green hover:text-portfolio-white"
-      type="button"
+    <IconButton
+      className="text-green"
       onClick={handleToggle}
       aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
       title={theme === "dark" ? "Dark theme" : "Light theme"}
     >
       {theme === "dark" ? <MoonIcon /> : <SunIcon />}
-    </button>
+    </IconButton>
   );
 }
