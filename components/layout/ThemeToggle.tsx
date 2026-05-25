@@ -2,8 +2,11 @@
 
 import { useEffect, useState } from "react";
 import IconButton from "@/components/ui/IconButton";
-
-type ThemeMode = "dark" | "light";
+import {
+  getPreferredTheme,
+  THEME_STORAGE_KEY,
+  type ThemeMode,
+} from "@/lib/theme";
 
 function MoonIcon() {
   return (
@@ -39,8 +42,7 @@ export default function ThemeToggle() {
   const [theme, setTheme] = useState<ThemeMode>("dark");
 
   useEffect(() => {
-    const savedTheme = window.localStorage.getItem("portfolio-theme");
-    const nextTheme = savedTheme === "light" ? "light" : "dark";
+    const nextTheme = getPreferredTheme();
 
     document.documentElement.dataset.theme = nextTheme;
     setTheme(nextTheme);
@@ -50,7 +52,7 @@ export default function ThemeToggle() {
     const nextTheme = theme === "dark" ? "light" : "dark";
 
     document.documentElement.dataset.theme = nextTheme;
-    window.localStorage.setItem("portfolio-theme", nextTheme);
+    window.localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
     setTheme(nextTheme);
   };
 
