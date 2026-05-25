@@ -4,7 +4,12 @@ import { type CSSProperties, useCallback, useEffect, useRef, useState } from "re
 import type { Experience } from "@/content/experience";
 import type { Profile } from "@/content/profile";
 import type { Project } from "@/content/projects";
-import { PROJECT_EDGE_THRESHOLD, SLIDES, type SlideId } from "@/lib/constants";
+import {
+  MOBILE_CANVAS_QUERY,
+  PROJECT_EDGE_THRESHOLD,
+  SLIDES,
+  type SlideId,
+} from "@/lib/constants";
 import ContactLinks from "./ContactLinks";
 import LeftRail from "./LeftRail";
 import ThemeToggle from "./ThemeToggle";
@@ -105,7 +110,7 @@ export default function CanvasFrame({
   const goToSlide = useCallback((slide: SlideId) => {
     setProjectHint(null);
     lastEdgeIntentRef.current = { direction: null, time: 0, delta: 0 };
-    if (window.matchMedia("(max-width: 1023px)").matches) {
+    if (window.matchMedia(MOBILE_CANVAS_QUERY).matches) {
       const titleAnchor = sectionRefs.current[slide]?.querySelector<HTMLElement>(
         "[data-section-anchor]",
       );
@@ -184,7 +189,7 @@ export default function CanvasFrame({
   // Referenced by: window wheel event listener; ignores mobile widths.
   useEffect(() => {
     const handleWheel = (event: WheelEvent) => {
-      if (window.matchMedia("(max-width: 1023px)").matches) return;
+      if (window.matchMedia(MOBILE_CANVAS_QUERY).matches) return;
       if (Math.abs(event.deltaY) < 4) return;
       event.preventDefault();
 
@@ -227,7 +232,7 @@ export default function CanvasFrame({
     if (!scroller) return;
 
     const updateMobileActiveSlide = () => {
-      if (!window.matchMedia("(max-width: 1023px)").matches) return;
+      if (!window.matchMedia(MOBILE_CANVAS_QUERY).matches) return;
 
       const scrollerRect = scroller.getBoundingClientRect();
       const centerY = scrollerRect.top + scrollerRect.height / 2;
