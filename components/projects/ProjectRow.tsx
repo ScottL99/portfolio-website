@@ -20,7 +20,7 @@ export default function ProjectRow({
   return (
     <article className="border-b border-line/60 text-sm transition hover:bg-light-navy/45">
       <button
-        className="grid w-full grid-cols-[minmax(0,1fr)_32px] gap-5 py-4 text-left"
+        className="grid w-full cursor-pointer grid-cols-[minmax(0,1fr)_32px] gap-5 py-4 text-left"
         type="button"
         onClick={onToggle}
         aria-expanded={isOpen}

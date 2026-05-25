@@ -283,7 +283,7 @@ export default function CanvasFrame({
           onSelect={goToSlide}
         />
 
-        <div className="grid min-h-0 grid-rows-[0_minmax(0,1fr)_0] md:w-full md:max-w-[50vw] md:grid-rows-[28px_minmax(0,1fr)_28px]">
+        <div className="grid min-h-0 grid-rows-[0_minmax(0,1fr)_0] md:w-full md:max-w-[800px] md:grid-rows-[28px_minmax(0,1fr)_28px]">
           <div className="flex items-center justify-end">
             <ProjectScrollHint direction={projectHint} placement="top" />
           </div>

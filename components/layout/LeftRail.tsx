@@ -19,7 +19,7 @@ export default function LeftRail({
   onSelect,
 }: LeftRailProps) {
   return (
-    <aside className="flex min-h-0 flex-col justify-between py-5 sm:py-9 md:w-fit md:shrink-0 md:py-10">
+    <aside className="flex min-h-0 flex-col justify-between py-5 sm:py-9 md:w-[24rem] md:shrink-0 md:py-10">
       <div>
         <button
           className="block text-left"

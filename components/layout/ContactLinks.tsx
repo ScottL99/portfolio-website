@@ -44,27 +44,27 @@ export default function ContactLinks({ profile }: ContactLinksProps) {
   const [isEmailVisible, setIsEmailVisible] = useState(false);
 
   const handleEmailButtonClick = () => {
-    setIsEmailVisible(true);
+    setIsEmailVisible((current) => !current);
   };
 
   return (
     <div className="flex items-center gap-5 text-[14px] font-bold leading-[1.1] tracking-[-0.012em] text-green">
       <a
-        className="flex size-10 shrink-0 items-center justify-center rounded-md border border-navy bg-light-navy/75 transition hover:border-green hover:text-portfolio-white"
+        className="flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-md border border-navy bg-light-navy/75 transition hover:border-green hover:text-portfolio-white"
         href={profile.githubUrl}
         aria-label="GitHub"
       >
         <GithubIcon />
       </a>
       <a
-        className="flex size-10 shrink-0 items-center justify-center rounded-md border border-navy bg-light-navy/75 transition hover:border-green hover:text-portfolio-white"
+        className="flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-md border border-navy bg-light-navy/75 transition hover:border-green hover:text-portfolio-white"
         href={profile.linkedInUrl}
         aria-label="LinkedIn"
       >
         <LinkedInIcon />
       </a>
       <button
-        className="flex size-10 shrink-0 items-center justify-center rounded-md border border-navy bg-light-navy/75 transition hover:border-green hover:text-portfolio-white"
+        className="flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-md border border-navy bg-light-navy/75 transition hover:border-green hover:text-portfolio-white"
         type="button"
         onClick={handleEmailButtonClick}
         aria-label="Email"

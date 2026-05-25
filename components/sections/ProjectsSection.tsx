@@ -25,7 +25,7 @@ export default function ProjectsSection({
           >
             Projects
           </h2>
-          <p className="max-w-[44rem] pt-2 text-[16px] leading-[1.4] tracking-[-0.005em] text-slate sm:text-[18px]">
+          <p className="pt-2 text-[16px] leading-[1.4] tracking-[-0.005em] text-slate sm:text-[18px]">
             A compact index of front-end work, designed to stay readable when
             the project count grows.
           </p>
