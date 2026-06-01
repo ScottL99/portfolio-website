@@ -5,6 +5,10 @@ export type Project = {
   tech: string[];
   url?: string;
   urlNote?: string;
+  additionalUrls?: Array<{
+    label: string;
+    url: string;
+  }>;
   github?: string;
 };
 
@@ -47,6 +51,12 @@ export const projects: Project[] = [
       "Rebuilt the site in WordPress and Elementor to match the client's editing workflow while improving responsive layouts and visual consistency. Set up reusable post templates, plugin configuration, HubSpot CRM support, chat tools, and analytics tracking.",
     tech: ["WordPress", "Elementor", "HubSpot", "GA"],
     url: "https://careapp.com.au/",
+    additionalUrls: [
+      {
+        label: "Original launch version",
+        url: "https://melindap12.sg-host.com/",
+      },
+    ],
   },
   {
     title: "Senator Liddle",

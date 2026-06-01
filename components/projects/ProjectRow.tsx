@@ -68,16 +68,31 @@ export default function ProjectRow({
             <p className="text-[16px] leading-[1.4] tracking-[-0.005em] text-slate sm:text-[18px]">
               {project.body}
             </p>
-            {project.url && (
-              <a
-                className="w-fit text-[14px] font-medium leading-[1.1] tracking-[-0.012em] text-light-slate underline-offset-4 transition-all duration-200 hover:text-green hover:underline"
-                href={project.url}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {formatProjectUrl(project.url)}
-                {project.urlNote ? ` (${project.urlNote})` : ""}
-              </a>
+            {(project.url || project.additionalUrls?.length) && (
+              <div className="flex flex-col items-start gap-2">
+                {project.url && (
+                  <a
+                    className="w-fit text-[14px] font-medium leading-[1.1] tracking-[-0.012em] text-light-slate underline-offset-4 transition-all duration-200 hover:text-green hover:underline"
+                    href={project.url}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {formatProjectUrl(project.url)}
+                    {project.urlNote ? ` (${project.urlNote})` : ""}
+                  </a>
+                )}
+                {project.additionalUrls?.map((link) => (
+                  <a
+                    className="w-fit text-[14px] font-medium leading-[1.1] tracking-[-0.012em] text-light-slate underline-offset-4 transition-all duration-200 hover:text-green hover:underline"
+                    href={link.url}
+                    key={`${link.label}-${link.url}`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
             )}
           </div>
         </div>
