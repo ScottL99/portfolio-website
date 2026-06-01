@@ -17,9 +17,6 @@ export default function ExperienceSection({
           >
             Experience
           </h2>
-          <p className="pt-2 text-[16px] leading-[1.4] tracking-[-0.005em] text-light-slate sm:text-[18px]">
-            Current production work across websites, CMS platforms, and client support.
-          </p>
         </div>
 
         <article className="flex w-full flex-col gap-3 rounded-md border border-line bg-light-navy/60 p-6">
