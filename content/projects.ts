@@ -53,7 +53,7 @@ export const projects: Project[] = [
     url: "https://careapp.com.au/",
     additionalUrls: [
       {
-        label: "Original launch version",
+        label: "original launch version",
         url: "https://melindap12.sg-host.com/",
       },
     ],
