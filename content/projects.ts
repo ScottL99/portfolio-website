@@ -21,6 +21,14 @@ export const projects: Project[] = [
     tech: ["Codex", "Next.js"],
   },
   {
+    title: "Graeme Koehne",
+    description: "Composer website with music catalogues, recordings, and media.",
+    body:
+      "Built a refined composer portfolio website for Graeme Koehne, with structured sections for biography, works, recordings, media, and contact. The site presents a large body of music through a clean editorial layout, making it easy to browse by category while keeping the overall experience elegant and focused.",
+    tech: ["Next.js", "TS", "Tailwind CSS"],
+    url: "https://graemekoehne.com/",
+  },
+  {
     title: "Foundher",
     description: "Fast campaign site for a SA female founder grant.",
     body:
@@ -43,14 +51,6 @@ export const projects: Project[] = [
       "Rebuilt the agency website with SVG graphics, motion-led hover states, page transitions, and separate mobile/desktop interaction patterns. Connected Sanity for blog/content updates and integrated podcast playback links.",
     tech: ["Next.js", "TS", "Tailwind CSS", "Sanity", "Motion", "GA"],
     url: "https://oranjecreative.com/",
-  },
-  {
-    title: "Graeme Koehne",
-    description: "Composer website with music catalogues, recordings, and media.",
-    body:
-      "Built a refined composer portfolio website for Graeme Koehne, with structured sections for biography, works, recordings, media, and contact. The site presents a large body of music through a clean editorial layout, making it easy to browse by category while keeping the overall experience elegant and focused.",
-    tech: ["Next.js", "TS", "Tailwind CSS"],
-    url: "https://graemekoehne.com/",
   },
   {
     title: "CareApp",
