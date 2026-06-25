@@ -19,6 +19,6 @@ export const profile: Profile = {
   cta:
     "If you have a website or web app to build, or any development opportunity to discuss, feel free to get in touch.",
   email: "scott.lin@outlook.com.au",
-  githubUrl: "https://github.com/",
+  githubUrl: "https://github.com/ScottL99",
   linkedInUrl: "https://www.linkedin.com/",
 };
