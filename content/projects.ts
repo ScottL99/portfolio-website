@@ -21,22 +21,6 @@ export const projects: Project[] = [
     tech: ["Codex", "Next.js"],
   },
   {
-    title: "Graeme Koehne",
-    description: "Composer website with music catalogues, recordings, and media.",
-    body:
-      "Built a refined composer portfolio website for Graeme Koehne, with structured sections for biography, works, recordings, media, and contact. The site presents a large body of music through a clean editorial layout, making it easy to browse by category while keeping the overall experience elegant and focused.",
-    tech: ["Next.js", "TS", "Tailwind CSS"],
-    url: "https://graemekoehne.com/",
-  },
-  {
-    title: "Foundher",
-    description: "Fast campaign site for a SA female founder grant.",
-    body:
-      "Built a polished temporary launch site for a grant campaign, with responsive layouts, clear application pathways, social campaign support, and GA tracking for visitor activity during the program period.",
-    tech: ["Next.js", "TS", "Tailwind CSS", "GA"],
-    url: "https://foundhergrantprogram.com/",
-  },
-  {
     title: "Nightingale Research",
     description: "CMS website with trials, enquiry forms, and maps.",
     body:
@@ -45,12 +29,28 @@ export const projects: Project[] = [
     url: "https://nightingaleresearch.com.au/",
   },
   {
-    title: "Oranje Creative",
-    description: "Agency rebuild with motion, CMS content, and podcasts.",
+    title: "Graeme Koehne",
+    description: "Composer website with music catalogues, recordings, and media.",
     body:
-      "Rebuilt the agency website with SVG graphics, motion-led hover states, page transitions, and separate mobile/desktop interaction patterns. Connected Sanity for blog/content updates and integrated podcast playback links.",
-    tech: ["Next.js", "TS", "Tailwind CSS", "Sanity", "Motion", "GA"],
-    url: "https://oranjecreative.com/",
+      "Built a refined composer portfolio website for Graeme Koehne, with structured sections for biography, works, recordings, media, and contact. The site presents a large body of music through a clean editorial layout, making it easy to browse by category while keeping the overall experience elegant and focused.",
+    tech: ["Next.js", "TS", "Tailwind CSS"],
+    url: "https://graemekoehne.com/",
+  },
+  {
+    title: "Snowden Fine String Instruments",
+    description: "Instrument maker website with editable guitar collections.",
+    body:
+      "Built a refined website for Michael Snowden's handcrafted steel-string guitars, featuring the maker's story, detailed instrument collections, build philosophy, artists, and enquiries. Connected Sanity so the client can keep guitar details and site content up to date.",
+    tech: ["Next.js", "Sanity"],
+    url: "https://michaelsnowdenfinestringinstruments.com/",
+  },
+  {
+    title: "Foundher",
+    description: "Fast campaign site for a SA female founder grant.",
+    body:
+      "Built a polished temporary launch site for a grant campaign, with responsive layouts, clear application pathways, social campaign support, and GA tracking for visitor activity during the program period.",
+    tech: ["Next.js", "TS", "Tailwind CSS", "GA"],
+    url: "https://foundhergrantprogram.com/",
   },
   {
     title: "CareApp",
@@ -67,28 +67,20 @@ export const projects: Project[] = [
     ],
   },
   {
+    title: "Oranje Creative",
+    description: "Agency rebuild with motion, CMS content, and podcasts.",
+    body:
+      "Rebuilt the agency website with SVG graphics, motion-led hover states, page transitions, and separate mobile/desktop interaction patterns. Connected Sanity for blog/content updates and integrated podcast playback links.",
+    tech: ["Next.js", "TS", "Tailwind CSS", "Sanity", "Motion", "GA"],
+    url: "https://oranjecreative.com/",
+  },
+  {
     title: "Senator Liddle",
     description: "WordPress site with reusable content templates.",
     body:
       "Built a public-facing WordPress site with Elementor templates for media, speeches, portfolio items, and news-style updates. Structured the front end so recurring content stays consistent and easier for the client to maintain.",
     tech: ["WordPress", "Elementor", "GA"],
     url: "https://kerrynneliddle.com.au/",
-  },
-  {
-    title: "wilko.ai",
-    description: "One-page startup site with responsive sections.",
-    body:
-      "Built a lightweight one-page marketing site with structured product messaging, responsive sections, clear calls to action, access information, and analytics tracking.",
-    tech: ["Next.js", "TS", "Tailwind CSS", "GA"],
-    url: "https://wilkoai.com/",
-  },
-  {
-    title: "Snowden Fine String Instruments",
-    description: "Lightweight CMS site for editable instrument listings.",
-    body:
-      "Built a small promotional website with a lightweight content structure and Sanity CMS, allowing the client to update featured instruments and current inventory without developer support.",
-    tech: ["Next.js", "TS", "Tailwind CSS", "Sanity", "GA"],
-    url: "https://michaelsnowdenfinestringinstruments.com/",
   },
   {
     title: "Fearless Innovator",
