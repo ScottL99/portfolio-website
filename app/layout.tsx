@@ -10,9 +10,31 @@ const spaceGrotesk = Space_Grotesk({
   display: "swap",
 });
 
+const siteTitle = "Scott Lin | Web Developer";
+const siteDescription =
+  "Front-end and web developer based in Adelaide, building responsive websites and web applications.";
+
 export const metadata: Metadata = {
-  title: "Scott.Lin | Front-end Developer",
-  description: "A canvas-style online CV for Scott.Lin, front-end developer.",
+  title: siteTitle,
+  description: siteDescription,
+  authors: [{ name: "Scott Lin" }],
+  creator: "Scott Lin",
+  openGraph: {
+    title: siteTitle,
+    description: siteDescription,
+    type: "website",
+    locale: "en_AU",
+    siteName: "Scott Lin",
+  },
+  twitter: {
+    card: "summary",
+    title: siteTitle,
+    description: siteDescription,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
