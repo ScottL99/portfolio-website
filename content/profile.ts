@@ -13,7 +13,7 @@ export const profile: Profile = {
   role: "Front-end & Web Developer",
   intro: [
     "Hi! I am Scott, a front-end and web developer based in Adelaide.",
-    "I build responsive, maintainable websites and web experiences for real clients, from design implementation and CMS setup to deployment, debugging, and ongoing support.",
+    "I build responsive, maintainable websites and web experiences for businesses and organisations, from design implementation and CMS setup to deployment, debugging, and ongoing support.",
     "I am currently strengthening my C#, back-end fundamentals, and system design skills as I grow toward more complete end-to-end web development.",
   ],
   cta:

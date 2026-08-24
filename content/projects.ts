@@ -33,7 +33,7 @@ export const projects: Project[] = [
     description: "Composer website with music catalogues, recordings, and media.",
     body:
       "Built a refined composer portfolio website for Graeme Koehne, with structured sections for biography, works, recordings, media, and contact. The site presents a large body of music through a clean editorial layout, making it easy to browse by category while keeping the overall experience elegant and focused.",
-    tech: ["Next.js", "TS", "Tailwind CSS"],
+    tech: ["Next.js", "TS", "Tailwind CSS", "GA"],
     url: "https://graemekoehne.com/",
   },
   {
@@ -41,15 +41,15 @@ export const projects: Project[] = [
     description: "Instrument maker website with editable guitar collections.",
     body:
       "Built a refined website for Michael Snowden's handcrafted steel-string guitars, featuring the maker's story, detailed instrument collections, build philosophy, artists, and enquiries. Connected Sanity so the client can keep guitar details and site content up to date.",
-    tech: ["Next.js", "Sanity"],
+    tech: ["Next.js", "TS", "Tailwind CSS", "Sanity"],
     url: "https://michaelsnowdenfinestringinstruments.com/",
   },
   {
     title: "Foundher",
     description: "Fast campaign site for a SA female founder grant.",
     body:
-      "Built a polished temporary launch site for a grant campaign, with responsive layouts, clear application pathways, social campaign support, and GA tracking for visitor activity during the program period.",
-    tech: ["Next.js", "TS", "Tailwind CSS", "GA"],
+      "Built a polished temporary launch site for a grant campaign, with responsive layouts, clear application pathways, social campaign support, a Stripe payment link, and GA tracking for visitor activity during the program period.",
+    tech: ["Next.js", "TS", "Tailwind CSS", "Stripe Link", "GA"],
     url: "https://foundhergrantprogram.com/",
   },
   {
@@ -73,6 +73,14 @@ export const projects: Project[] = [
       "Rebuilt the agency website with SVG graphics, motion-led hover states, page transitions, and separate mobile/desktop interaction patterns. Connected Sanity for blog/content updates and integrated podcast playback links.",
     tech: ["Next.js", "TS", "Tailwind CSS", "Sanity", "Motion", "GA"],
     url: "https://oranjecreative.com/",
+  },
+  {
+    title: "Women in Innovation",
+    description: "Ongoing website, membership, and payment system maintenance.",
+    body:
+      "Provide ongoing website management and maintenance for Women in Innovation, including page updates, general site upkeep, MemberPress membership system support, and payment system maintenance for the organisation's community and awards activity.",
+    tech: ["Website Maintenance", "WordPress", "MemberPress"],
+    url: "https://womenininnovation.com.au/",
   },
   {
     title: "Senator Liddle",
