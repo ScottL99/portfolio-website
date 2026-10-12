@@ -10,14 +10,14 @@ export type Profile = {
 
 export const profile: Profile = {
   name: "Scott.Lin",
-  role: "Front-end & Web Developer",
+  role: "Web Developer",
   intro: [
-    "Hi! I am Scott, a front-end and web developer based in Adelaide.",
-    "I build responsive, maintainable websites and web experiences for businesses and organisations, from design implementation and CMS setup to deployment, debugging, and ongoing support.",
-    "I am currently strengthening my C#, back-end fundamentals, and system design skills as I grow toward more complete end-to-end web development.",
+    "Hi! I am Scott, a web developer based in Adelaide.",
+    "I build responsive, maintainable websites and web experiences using WordPress, Elementor, Next.js and React.",
+    "My work covers CMS development, third-party integrations, interactive web experiences, deployment and ongoing technical support.",
+    "I'm also expanding my back-end development skills, particularly in C# and system design, as I work towards becoming a more well-rounded developer.",
   ],
-  cta:
-    "If you have a website or web app to build, or any development opportunity to discuss, feel free to get in touch.",
+  cta: "If you have a website or web app to build, or any development opportunity to discuss, feel free to get in touch.",
   email: "scott.lin@outlook.com.au",
   githubUrl: "https://github.com/ScottL99",
   linkedInUrl: "https://www.linkedin.com/in/scottlin-au/",
