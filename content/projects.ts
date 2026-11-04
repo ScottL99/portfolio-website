@@ -35,6 +35,14 @@ export const projects: Project[] = [
     url: "https://graemekoehne.com/",
   },
   {
+    title: "The Good Knee",
+    description: "Knee health website with patient resources and clinician education.",
+    body:
+      "Built a WordPress and Elementor website for knee specialist Dr Jane Rooney, bringing together patient education, injury guides, and clinician resources. Organised detailed knee health information into dedicated patient and clinician sections, with educational videos, anatomy popups, professional training links, and clear pathways to care.",
+    tech: ["WordPress", "Elementor"],
+    url: "https://thegoodknee.com.au/",
+  },
+  {
     title: "Snowden Fine String Instruments",
     description: "Instrument maker website with editable guitar collections.",
     body: "Built a refined website for Michael Snowden's handcrafted steel-string guitars, featuring the maker's story, detailed instrument collections, build philosophy, artists, and enquiries. Connected Sanity so the client can keep guitar details and site content up to date.",
